@@ -37,72 +37,72 @@ const pricing = {
 };
 
 // Update total price in the UI
-const updateTotalPrice = () => {
-  // Reset the current price to base price
-  currentPrice = basePrice;
+// const updateTotalPrice = () => {
+//   // Reset the current price to base price
+//   currentPrice = basePrice;
 
-  // Performance Wheel Option
-  if (selectedOptions['Performance Wheels']) {
-    currentPrice += pricing['Performance Wheels'];
-  }
+//   // Performance Wheel Option
+//   if (selectedOptions['Performance Wheels']) {
+//     currentPrice += pricing['Performance Wheels'];
+//   }
 
-  // Performance Package Option
-  if (selectedOptions['Performance Package']) {
-    currentPrice += pricing['Performance Package'];
-  }
+//   // Performance Package Option
+//   if (selectedOptions['Performance Package']) {
+//     currentPrice += pricing['Performance Package'];
+//   }
 
-  // Full Self Driving Option
-  if (selectedOptions['Full Self-Driving']) {
-    currentPrice += pricing['Full Self-Driving'];
-  }
+//   // Full Self Driving Option
+//   if (selectedOptions['Full Self-Driving']) {
+//     currentPrice += pricing['Full Self-Driving'];
+//   }
 
-  // Accessory Checkboxes
-  accessoryCheckboxes.forEach((checkbox) => {
-    // Extract the accessory label
-    const accessoryLabel = checkbox
-      .closest('label')
-      .querySelector('span')
-      .textContent.trim();
+//   // Accessory Checkboxes
+//   accessoryCheckboxes.forEach((checkbox) => {
+//     // Extract the accessory label
+//     const accessoryLabel = checkbox
+//       .closest('label')
+//       .querySelector('span')
+//       .textContent.trim();
 
-    const accessoryPrice = pricing['Accessories'][accessoryLabel];
+//     const accessoryPrice = pricing['Accessories'][accessoryLabel];
 
-    // Add to current price if accessory is selected
-    if (checkbox.checked) {
-      currentPrice += accessoryPrice;
-    }
-  });
+//     // Add to current price if accessory is selected
+//     if (checkbox.checked) {
+//       currentPrice += accessoryPrice;
+//     }
+//   });
 
-  // Update the total price in UI
-  totalPriceElement.textContent = `$${currentPrice.toLocaleString()}`;
+//   // Update the total price in UI
+//   totalPriceElement.textContent = `$${currentPrice.toLocaleString()}`;
 
-  updatePaymentBreakdown();
-};
+//   updatePaymentBreakdown();
+// };
 
-// Update payment breakdown based on current price
-const updatePaymentBreakdown = () => {
-  // Calculate down payment
-  const downPayment = currentPrice * 0.1;
-  downPaymentElement.textContent = `$${downPayment.toLocaleString()}`;
+// // Update payment breakdown based on current price
+// const updatePaymentBreakdown = () => {
+//   // Calculate down payment
+//   const downPayment = currentPrice * 0.1;
+//   downPaymentElement.textContent = `$${downPayment.toLocaleString()}`;
 
-  // Calculate loan details (assuming 60-month loan and 3% interest rate)
-  const loanTermMonths = 60;
-  const interestRate = 0.03;
+//   // Calculate loan details (assuming 60-month loan and 3% interest rate)
+//   const loanTermMonths = 60;
+//   const interestRate = 0.03;
 
-  const loanAmount = currentPrice - downPayment;
+//   const loanAmount = currentPrice - downPayment;
 
-  // Monthly payment formula: P * (r(1+r)^n) / ((1+r)^n - 1)
-  const monthlyInterestRate = interestRate / 12;
+//   // Monthly payment formula: P * (r(1+r)^n) / ((1+r)^n - 1)
+//   const monthlyInterestRate = interestRate / 12;
 
-  const monthlyPayment =
-    (loanAmount *
-      (monthlyInterestRate *
-        Math.pow(1 + monthlyInterestRate, loanTermMonths))) /
-    (Math.pow(1 + monthlyInterestRate, loanTermMonths) - 1);
+//   const monthlyPayment =
+//     (loanAmount *
+//       (monthlyInterestRate *
+//         Math.pow(1 + monthlyInterestRate, loanTermMonths))) /
+//     (Math.pow(1 + monthlyInterestRate, loanTermMonths) - 1);
 
-  monthlyPaymentElement.textContent = `$${monthlyPayment
-    .toFixed(2)
-    .toLocaleString()}`;
-};
+//   monthlyPaymentElement.textContent = `$${monthlyPayment
+//     .toFixed(2)
+//     .toLocaleString()}`;
+// };
 
 // Handle Top Bar On Scroll
 const handleScroll = () => {
@@ -113,12 +113,12 @@ const handleScroll = () => {
 
 // Image Mapping
 const exteriorImages = {
-  'Stealth Grey': './images/model-y-stealth-grey.jpg',
-  'Pearl White': './images/model-y-pearl-white.jpg',
-  'Deep Blue': './images/model-y-deep-blue-metallic.jpg',
-  'Solid Black': './images/model-y-solid-black.jpg',
-  'Ultra Red': './images/model-y-ultra-red.jpg',
-  Quicksilver: './images/model-y-quicksilver.jpg',
+  '35percent': './images/Toyota_Prius_Prime_2019_Side_35percent_rear.jpg',
+  '50percent': './images/Toyota_Prius_Prime_2019_Side_50percent_rear.jpg.jpg',
+  '80percent': './images/Toyota_Prius_Prime_2019_Side_80percent_rear.jpg.jpg',
+  //'Solid Black': './images/model-y-solid-black.jpg',
+  //'Ultra Red': './images/model-y-ultra-red.jpg',
+  //Quicksilver: './images/model-y-quicksilver.jpg',
 };
 
 const interiorImages = {
@@ -161,7 +161,7 @@ const updateExteriorImage = () => {
     ? '-performance'
     : '';
   const colorKey =
-    selectedColor in exteriorImages ? selectedColor : 'Stealth Grey';
+    selectedColor in exteriorImages ? selectedColor : '35percent';
   exteriorImage.src = exteriorImages[colorKey].replace(
     '.jpg',
     `${performanceSuffix}.jpg`
@@ -169,44 +169,44 @@ const updateExteriorImage = () => {
 };
 
 // Wheel Selection
-const handleWheelButtonClick = (event) => {
-  if (event.target.tagName === 'BUTTON') {
-    const buttons = document.querySelectorAll('#wheel-buttons button');
-    buttons.forEach((btn) => btn.classList.remove('bg-gray-700', 'text-white'));
+// const handleWheelButtonClick = (event) => {
+//   if (event.target.tagName === 'BUTTON') {
+//     const buttons = document.querySelectorAll('#wheel-buttons button');
+//     buttons.forEach((btn) => btn.classList.remove('bg-gray-700', 'text-white'));
 
-    // Add selected styles to clicked button
-    event.target.classList.add('bg-gray-700', 'text-white');
+//     // Add selected styles to clicked button
+//     event.target.classList.add('bg-gray-700', 'text-white');
 
-    selectedOptions['Performance Wheels'] =
-      event.target.textContent.includes('Performance');
+//     selectedOptions['Performance Wheels'] =
+//       event.target.textContent.includes('Performance');
 
-    updateExteriorImage();
+//     updateExteriorImage();
 
-    updateTotalPrice();
-  }
-};
+//     updateTotalPrice();
+//   }
+// };
 
-// Performance Package Selection
-const handlePerformanceButtonClick = () => {
-  const isSelected = performanceBtn.classList.toggle('bg-gray-700');
-  performanceBtn.classList.toggle('text-white');
+// // Performance Package Selection
+// const handlePerformanceButtonClick = () => {
+//   const isSelected = performanceBtn.classList.toggle('bg-gray-700');
+//   performanceBtn.classList.toggle('text-white');
 
-  // Update selected options
-  selectedOptions['Performance Package'] = isSelected;
+//   // Update selected options
+//   selectedOptions['Performance Package'] = isSelected;
 
-  updateTotalPrice();
-};
+//   updateTotalPrice();
+// };
 
-// Full Self Driving Selection
-const fullSelfDrivingChange = () => {
-  selectedOptions['Full Self-Driving'] = fullSelfDrivingCheckbox.checked;
-  updateTotalPrice();
-};
+// // Full Self Driving Selection
+// const fullSelfDrivingChange = () => {
+//   selectedOptions['Full Self-Driving'] = fullSelfDrivingCheckbox.checked;
+//   updateTotalPrice();
+// };
 
-// Handle Accessory Checkbox Listeners
-accessoryCheckboxes.forEach((checkbox) => {
-  checkbox.addEventListener('change', () => updateTotalPrice());
-});
+// // Handle Accessory Checkbox Listeners
+// accessoryCheckboxes.forEach((checkbox) => {
+//   checkbox.addEventListener('change', () => updateTotalPrice());
+// });
 
 // Initial Update Total Price
 updateTotalPrice();

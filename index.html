@@ -80,7 +80,14 @@
         >
           Cars Smile LG
         </a>
-        <div class="hidden md:flex space-x-6 text-xl">
+        <div class=" items-center space-x-4">
+          <a
+            href="#"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300"
+            >Facebook</a
+          >
+        </div>
+        <!--div class="hidden md:flex space-x-6 text-xl">
           <a
             href="#"
             class="nav-link text-gray-700 dark:text-gray-200 hover:text-indigo-800 dark:hover:text-white transition-colors duration-300"
@@ -101,15 +108,9 @@
             class="nav-link text-gray-700 dark:text-gray-200 hover:text-indigo-800 dark:hover:text-white transition-colors duration-300"
             >Configurator</a
           >
-        </div>
-        <div class="hidden md:flex items-center space-x-4">
-          <a
-            href="#"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300"
-            >Facebook</a
-          >
-        </div>
-        <button
+        </div-->
+        
+        <!--button
           id="mobileMenuButton"
           class="md:hidden text-gray-700 dark:text-gray-200 hover:text-indigo-800 dark:hover:text-white focus:outline-none transition-colors duration-300"
         >
@@ -127,9 +128,9 @@
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-        </button>
+        </button-->
       </nav>
-      <div
+      <!--div
         id="mobileMenu"
         class="mobile-menu md:hidden bg-white dark:bg-gray-800 shadow-lg absolute w-full left-0 transform -translate-y-full opacity-0"
       >
@@ -161,7 +162,7 @@
             >Configureaza folia</a
           >
         </div>
-      </div>
+      </div-->
     </header>
 
     <div
@@ -230,7 +231,7 @@
             class="h-96 bg-gray-200 flex items-center justify-center overflow-hidden mb-4"
           >
             <img
-              src="./images/image_zero1.png"
+              src="./images/Toyota_Prius_Prime_2019_Plus_Hatchback_Side_1_sc1.jpg"
               alt="Configurator car"
               class="max-w-full h-auto transform scale-125"
               id="exterior-image"
@@ -295,57 +296,94 @@
         <div class="my-8" id="exterior-buttons">
           <h3 class="font-semibold mb-2">Opacitate folii:</h3>
           <div class="flex space-x-4">
-            <button
-              class="transition-transform duration-300 hover:scale-90"
-            >
-            <img src="./images/35percent.png" alt="13" class="w-[120px]" />
-
-            </button>
-            <button class="transition-transform duration-300 hover:scale-110">
-              <img src="./images/50percent.png" alt="13" class="w-[120px]" />
-            </button>
-            <button class="transition-transform duration-300 hover:scale-110">
-              <img src="./images/80percent.png" alt="13" class="w-[120px] h-[120px]" />
-        
-            </button>
-            <!--button class="transition-transform duration-300 hover:scale-110">
-              <img
-                src="./images/button-solid-black.avif"
-                alt="Solid Black"
-                class="w-22"
-              />
-            </button>
-            <button class="transition-transform duration-300 hover:scale-110">
-              <img
-                src="./images/button-ultra-red.avif"
-                alt="Ultra Red"
-                class="w-22"
-              />
-            </button>
-            <button class="transition-transform duration-300 hover:scale-110">
-              <img
-                src="./images/button-quicksilver.avif"
-                alt="Quicksilver"
-                class="w-22"
-              />
-            </button-->
+            <div class="flex gap-2">
+              <button class="transition-transform duration-300 hover:scale-90">
+          <img src="./images/35percent.png" alt="35percent" class="w-[80px]" />
+              </button>
+              <button class="transition-transform duration-300 hover:scale-105">
+          <img src="./images/50percent.png" alt="50percent" class="w-[80px]" />
+              </button>
+              <button class="transition-transform duration-300 hover:scale-105">
+          <img src="./images/80percent.png" alt="80percent" class="w-[80px] h-[80px]" />
+              </button>
+              <button class="transition-transform duration-300 hover:scale-105">
+          <img src="./svg/power-reset-svgrepo-com (1).svg" alt="reset" class="w-[80px] h-[80px]" />
+              </button>
+            </div>
           </div>
         </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const exteriorButtons = document.querySelectorAll("#exterior-buttons button");
+            const exteriorImage = document.getElementById("exterior-image");
+            const viewButtons = document.querySelectorAll("#interior-buttons button");
 
+            const viewImages = {
+              "front-view-button": [
+          "./images/front_car/Toyota_Prius_Prime_2019_Plus_Hatchback_45_Front_1_sc1.jpg",
+          "./images/front_car/front_50percent.jpg",
+          "./images/front_car/front_80percent.jpg",
+          "./images/front_car/front_reset.jpg"
+              ],
+              "side-view-button": [
+          "./images/side_car/Toyota_Prius_Prime_2019_Side_35percent_rear.jpg",
+          "./images/side_car/Toyota_Prius_Prime_2019_Side_50percent_rear.jpg",
+          "./images/side_car/Toyota_Prius_Prime_2019_Side_80percent_rear.jpg",
+          "./images/side_car/Toyota_Prius_Prime_2019_Plus_Hatchback_Side_1_sc1.jpg"
+              ],
+              "back-view-button": [
+          "./images/back_car/Toyota_Prius_Prime_2019_Plus_Hatchback_45_Rear_1_35percent.jpg",
+          "./images/back_car/Toyota_Prius_Prime_2019_Plus_Hatchback_45_Rear_1_50percent.jpg",
+          "./images/back_car/Toyota_Prius_Prime_2019_Plus_Hatchback_45_Rear_1_80percent.jpg",
+          "./images/back_car/Toyota_Prius_Prime_2019_Plus_Hatchback_45_Rear_1_sc1.jpg"
+              ]
+            };
+
+            let currentView = "side-view-button";
+
+            exteriorButtons.forEach((button, index) => {
+              button.addEventListener("click", () => {
+          exteriorImage.src = viewImages[currentView][index];
+              });
+            });
+
+            viewButtons.forEach((button) => {
+              button.addEventListener("click", () => {
+          viewButtons.forEach((btn) => btn.classList.remove("btn-selected"));
+          button.classList.add("btn-selected");
+          currentView = button.id;
+          exteriorImage.src = viewImages[currentView][0];
+              });
+            });
+
+            // Initialize with the first view
+            exteriorImage.src = viewImages[currentView][0];
+          });
+        </script>
         <!-- Interior Buttons -->
-        <!--div class="my-8" id="interior-buttons">
+        <div class="my-8" id="interior-buttons">
           <h3 class="font-semibold mb-2">Interior Color</h3>
           <div class="flex space-x-4">
             <button
-              class="btn-selected transition-transform duration-300 hover:scale-110"
+              class=" transition-transform duration-300 hover:scale-110"
+              id="front-view-button"
             >
-              <img src="./images/button-dark.avif" alt="Dark" class="w-12" />
+              <img src="./images/front_car/Toyota_Prius_Prime_2019_Plus_Hatchback_45_Front_1_sc1.jpg" alt="Front View" class="w-[80px] h-[60px]" />
             </button>
-            <button class="transition-transform duration-300 hover:scale-110">
-              <img src="./images/button-light.avif" alt="Light" class="w-12" />
+            <button
+              class=" btn-selected transition-transform duration-300 hover:scale-110"
+              id="side-view-button"
+            >
+              <img src="./images/side_car/Toyota_Prius_Prime_2019_Plus_Hatchback_Side_1_sc1.jpg" alt="Side View" class="w-[80px] h-[60px]" />
+            </button>
+            <button
+              class="transition-transform duration-300 hover:scale-110"
+              id="back-view-button"
+            >
+              <img src="./images/back_car/Toyota_Prius_Prime_2019_Plus_Hatchback_45_Rear_1_sc1.jpg" alt="Back View" class="w-[80px] h-[60px]" />
             </button>
           </div>
-        </div-->
+        </div>
 
         <!-- Wheel Buttons -->
         <!--div class="mb-8" id="wheel-buttons">
@@ -434,12 +472,12 @@
         <img
           alt="Low and Medium Voltage Connections"
           class="absolute inset-0 w-full h-full object-cover object-center"
-          src="img/backup-1096398_640.jpg"
+          src="images/car-4305163_1280.jpg"
         />
         <div
           class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
         >
-          <h2 class="text-white text-2xl font-bold">RACORDURI EECTRICE</h2>
+          <h2 class="text-white text-2xl font-bold">OMOLOGATE RAR</h2>
         </div>
         <div
           class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
@@ -447,7 +485,7 @@
           <h2
             class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
           >
-            RACORDURI ELECTRICE
+          OMOLOGATE RAR
           </h2>
           <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
             Joasă și Medie Tensiune
