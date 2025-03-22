@@ -588,6 +588,10 @@ video {
   }
 }
 
+.visible {
+  visibility: visible;
+}
+
 .fixed {
   position: fixed;
 }
@@ -638,6 +642,10 @@ video {
 
 .z-auto {
   z-index: auto;
+}
+
+.z-40 {
+  z-index: 40;
 }
 
 .m-4 {
